@@ -11,8 +11,8 @@ Compatible with LimeSurvey versions 5.x and 6.x.
 
 **Implementation:**
 
-1) - **Manual installation** - Extract the download and upload the *Social-Value-Orientation* folder to */pathToLimeSurvey/upload/themes/question/*.
-    - **Theme manager** - Extract the download, compress (zip) the *Social-Value-Orientation* folder and import via the theme manager.
+1) - **Manual installation** - Extract the download and upload the *Adjustable-Semantic-Diff-Array* folder to */pathToLimeSurvey/upload/themes/question/*.
+    - **Theme manager** - Extract the download, compress (zip) the *Adjustable-Semantic-Diff-Array* folder and import via the theme manager.
 
 2) Create an "Adjustable Semantic Differential Array" type question, click Save.   
 ![Image Adjustable Semantic Diff Array 4](/Adjustable-Semantic-Diff-Array/survey/questions/answer/arrays/array/assets/images/asda_4.png)
