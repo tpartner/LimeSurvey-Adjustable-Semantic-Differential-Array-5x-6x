@@ -5,6 +5,8 @@ This may be useful if:
 - You want to have a "No Answer" item outside of the semantic differential layout in a mandatory question.
 - You want to place a column before the semantic differential layout.
 
+Compatible with LimeSurvey versions 5.x and 6.x.
+
 ![Image Adjustable Semantic Diff Array 2](/Adjustable-Semantic-Diff-Array/survey/questions/answer/arrays/array/assets/images/asda_2.png)
 
 **Implementation:**
