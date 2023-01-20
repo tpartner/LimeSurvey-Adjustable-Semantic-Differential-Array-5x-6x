@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <metadata>
+        <name>Adjustable-Semantic-Diff-Array</name>
+        <type>question_theme</type>
+        <title>Adjustable Semantic Differential Array</title>
+		<creationDate>2021-08-17 08:00</creationDate>
+		<lastUpdate>2023-01-20 08:00</lastUpdate>
+		<author>Tony Partner</author>
+		<authorUrl>http://partnersurveys.com</authorUrl>
+		<supportUrl>None</supportUrl>
+        <license>GNU General Public License version 2 or later</license>
+        <version>1.0</version>
+        <apiVersion>1</apiVersion>
+		<lastSecurityUpdate>1.0</lastSecurityUpdate>
+        <description>A semantic differential array question in which you can move the position of the last column.</description>		
+        <questionType>F</questionType>
+        <group>Arrays</group>
+        <answerscales>0</answerscales>
+        <hasdefaultvalues>1</hasdefaultvalues>
+        <assessable>1</assessable>
+        <class>asda-question</class>
+    <subquestions>1</subquestions></metadata>
+
+    <compatibility>
+        <version>3.0</version>
+        <version>4.0</version>
+        <version>5.0</version>
+        <version>6.0</version>
+    </compatibility>
+
+    <!--
+        Here the list of the css/js files to load.
+        Any file here will be loaded via the asset manager (when in config.php debug = 0)
+    -->
+    <files>
+        <css>
+            <filename>css/asda.css</filename>
+        </css>
+        <js>
+        </js>
+		<preview>
+			<filename>images/asda_1.png</filename>
+		</preview>
+    </files>
+
+    <attributes>
+        <!-- New attributes -->
+        <attribute>
+            <name>asda_column_position</name>
+            <category>Custom options</category>
+            <sortorder>0</sortorder>
+            <inputtype>integer</inputtype>
+            <help>The position that the last column will be moved to.</help>
+            <caption>Column position</caption>
+        </attribute>
+		
+        <!-- Hide some core attributes -->
+        <attribute>
+            <name>use_dropdown</name>
+            <category>Disabled options</category>
+            <sortorder>0</sortorder>
+            <inputtype/>
+            <help>This setting is not available in this question theme.</help>
+            <caption>Dropdown presentation (not required)</caption>
+            <readonly_when_active>false</readonly_when_active>
+        </attribute>
+		
+    </attributes>
+
+    <!-- Here datas about how LimeSurvey should load the core js/css of the question -->
+    <engine>
+        <load_core_css>true</load_core_css>
+        <load_core_js>true</load_core_js>
+        <show_as_template>true</show_as_template>
+        <show_as_question_type>true</show_as_question_type>
+    </engine>
+</config>

@@ -1,0 +1,96 @@
+{#
+/**
+ * array array, no dropdown, Html
+ *
+ * @var $sColumns   : the columns, generated with the view columns/col.php
+ * @var $sHeaders   : the headers, generated with the view rows/cell/thead.php
+ * @var $sRows      : the rows, generated with the view rows/answer_row.php
+ *
+ * @var $extraclass
+
+ *
+ */
+#}
+
+{% set qID = basename|split('X')[2] %}
+{% set asdaPosition = question_template_attribute.asda_column_position %}
+
+<!-- Array -->
+
+<!-- answer -->
+<table class="{{ coreClass }} table table-bordered table-hover table-array-radio" role="group" aria-labelledby="ls-question-text-{{ basename }}">
+    <colgroup class="col-responses">
+        <col class="col-answers"  style='width: {{ answerwidth }}%;' />
+        {# columns/col.php #}
+        {% for aColumn in aColumns %}
+            <col class="{{ aColumn.class }}" style='width: {{ aColumn.cellwidth }}%'/>
+        {% endfor %}
+    </colgroup>
+    <thead aria-hidden="true">
+        <tr class="ls-heading">
+            {{sHeaders}}
+        </tr>
+    </thead>
+    <tbody>
+         {% if anscount==0 %}
+            <tr>
+                <th class="answertext">
+                     {{ gT('Error: This question has no answers.') }}
+                </th>
+            </tr>
+         {% endif %}
+        
+            {% for aRow in aRows %}
+                {% include aRow.template with aRow.content only %}
+            {% endfor %}
+        
+    </tbody>
+</table>
+<!-- end of answer -->
+
+<script type="text/javascript" charset="utf-8">
+	
+	$(document).on('ready pjax:scriptcomplete',function(){
+			
+		// Define this question
+		var thisQuestion = $('#question{{qID}}');
+		
+		$(thisQuestion).addClass('asda-question');
+		
+		var columnPosition = '{{ asdaPosition }}';
+		var columnCount = $('tr[id^="javatbd"]:eq(0) > *', thisQuestion).length;
+		
+		// Move the last column
+		$('col:nth-last-child(2)', thisQuestion).addClass('moved-col');
+		$('tr > *:nth-last-child(2)', thisQuestion).addClass('moved-item');
+		if(columnPosition < columnCount) {
+			
+			$('col:nth-child('+columnPosition+')', thisQuestion).before($('col:nth-last-child(2)', thisQuestion));
+			
+			$('table.subquestion-list tr', thisQuestion).each(function(i) {
+				$('> *:nth-child('+columnPosition+')', this).before($('> *:nth-last-child(2)', this));
+			});
+		}
+		else {
+			
+			$('col:last-child', thisQuestion).after($('col:nth-last-child(2)', thisQuestion));
+			
+			$('table.subquestion-list tr', thisQuestion).each(function(i) {
+				$('> *:last-child', this).after($('> *:nth-last-child(2)', this));
+			});
+		}
+		
+		// Fix up the col classes
+		$('col', thisQuestion).removeClass('ls-col-odd ls-col-even');
+		
+		$('col:not(.col-answers):not(.answertextright)', thisQuestion).each(function(i) {
+			
+			var colClass= 'ls-col-odd';
+			if((2-(i%2)) == 1) {
+				colClass= 'ls-col-even';
+			}
+			$(this).addClass(colClass);
+		});
+    });
+</script>
+
